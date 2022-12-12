@@ -36,6 +36,19 @@
   {{- end }}
 
   <footer class="post-footer">
+    {{- if (.Param "googleAds")}}
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block;margin-top: 10px;margin-bottom: 5px;"
+         data-ad-client="ca-pub-7936677155683743"
+         data-ad-slot="7648023523"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    {{- end}}
+
     {{- $tags := .Language.Params.Taxonomies.tag | default "tag" }}
     <ul class="post-tags">
       {{- range ($.GetTerms $tags) }}
@@ -49,19 +62,6 @@
     {{- partial "share_icons.html" . -}}
     {{- end }}
   </footer>
-
-  {{- if (.Param "googleAds")}}
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <ins class="adsbygoogle"
-       style="display:block;margin-top:50px;"
-       data-ad-client="ca-pub-7936677155683743"
-       data-ad-slot="7648023523"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-  {{- end}}
 
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
